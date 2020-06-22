@@ -1,3 +1,4 @@
+export { VERSION } from './version'
 export {
   WechatyIntercom,
   WechatyIntercomConfig,
