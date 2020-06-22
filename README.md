@@ -20,7 +20,9 @@ Does customer support in a Wechat Room.
 
 ### v0.2 (Jun 2020)
 
-Init code base
+1. Init code base
+1. Room message to Intercom
+1. Intercom message to Room (Powered by Smee.io)
 
 ## Contributors
 
