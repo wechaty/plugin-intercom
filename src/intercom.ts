@@ -87,7 +87,7 @@ function intercomTalker (token: string) {
     }
 
     try {
-      const restRes:  IRestResponse<any> = await client.create<any>('conversations/last/reply', replyOptions)
+      await client.create<any>('conversations/last/reply', replyOptions)
       // console.info('ret:', restRes.result)
       return true
     } catch (e) {
