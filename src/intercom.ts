@@ -88,7 +88,7 @@ function intercomTalker (token: string) {
 
     try {
       const restRes:  IRestResponse<any> = await client.create<any>('conversations/last/reply', replyOptions)
-      console.info('ret:', restRes.result)
+      // console.info('ret:', restRes.result)
       return true
     } catch (e) {
       // console.error('error: ', e)
@@ -134,7 +134,7 @@ function intercomTalker (token: string) {
         value: contactId,
       },
     })
-    console.info('ret:', restRes.result.data[0])
+    // console.info('ret:', restRes.result.data[0])
     return restRes.result.data.map(
       (o: { id: string }) => o.id,
     )

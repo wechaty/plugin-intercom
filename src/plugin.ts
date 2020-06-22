@@ -60,7 +60,6 @@ function WechatyIntercom (config: WechatyIntercomConfig): WechatyPlugin {
     wechaty.on('message', async message => {
       const room = message.room()
       const from = message.from()
-      const text = message.text()
 
       if (!from)                          { return }
       if (!room)                          { return }
@@ -70,6 +69,7 @@ function WechatyIntercom (config: WechatyIntercomConfig): WechatyPlugin {
         if (!await message.mentionSelf()) { return }
       }
 
+      const text = await message.mentionText()
       await talkIntercom(from, text)
     })
   }
