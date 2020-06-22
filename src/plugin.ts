@@ -32,7 +32,7 @@ function WechatyIntercom (config: WechatyIntercomConfig): WechatyPlugin {
   if (!token) {
     throw new Error(`
       Wechaty Intercom Plugin requires Intercom TOKEN for authorization.
-      Please set WECHATY_PLUGIN_INTERCOM_TOKEN environment variable,
+      Please set ${WECHATY_PLUGIN_INTERCOM_TOKEN} environment variable,
       or set 'intercomToken' in plugin config.
     `)
   }
@@ -43,7 +43,7 @@ function WechatyIntercom (config: WechatyIntercomConfig): WechatyPlugin {
   if (!webhookProxyUrl) {
     throw new Error(`
       Wechaty Intercom Plugin requires Webhook Proxy URL for receiving Intercom Conversation Replies.
-      Please set WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL environment variable,
+      Please set ${WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL} environment variable,
       or set 'webhookProxyUrl' in plugin config.
     `)
   }

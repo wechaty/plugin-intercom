@@ -31,7 +31,7 @@ function intercomTalker (token: string) {
     const contactId = contact.id
     const name      = contact.name()
     const avatar    = (contact as any).payload?.avatar
-    const email     = (contact.weixin() || contactId) + '@wechat.com'
+    // const email     = (contact.weixin() || contactId) + '@wechat.com'
 
     /**
      * Create contact if not exist yet
@@ -41,7 +41,7 @@ function intercomTalker (token: string) {
       const newId = await createContact({
         avatar,
         contactId,
-        email,
+        // email,
         name,
       })
       intercomContactIdList.push(newId)
