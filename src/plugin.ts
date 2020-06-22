@@ -8,6 +8,7 @@ import {
 }                   from 'wechaty-plugin-contrib'
 
 import { intercomTalker } from './intercom'
+import { smeeWebhook }    from './smee'
 
 const WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL = 'WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL'
 const WECHATY_PLUGIN_INTERCOM_TOKEN             = 'WECHATY_PLUGIN_INTERCOM_TOKEN'
@@ -49,6 +50,8 @@ function WechatyIntercom (config: WechatyIntercomConfig): WechatyPlugin {
   }
 
   const talkIntercom = intercomTalker(token)
+  const webhook = smeeWebhook(webhookProxyUrl)
+
   const matchRoom    = matchers.roomMatcher(config.room)
 
   /**
@@ -71,6 +74,23 @@ function WechatyIntercom (config: WechatyIntercomConfig): WechatyPlugin {
 
       const text = await message.mentionText()
       await talkIntercom(from, text)
+    })
+
+    webhook(async (contactId, text) => {
+      const contact = wechaty.Contact.load(contactId)
+      const roomList = await wechaty.Room.findAll()
+
+      /**
+       * TODO(huan): if one contact in two intercom room, how to know which room should the bot reply?
+       */
+      for (const room of roomList) {
+        if (!await matchRoom(room))   { continue }
+        if (!await room.has(contact)) { continue }
+
+        await room.say(text, contact)
+        break
+      }
+
     })
   }
 

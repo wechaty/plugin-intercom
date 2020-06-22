@@ -1,35 +1,72 @@
+import http from 'http'
 
-// const SmeeClient = require('smee-client')
+import express from 'express'
+import bodyParser from 'body-parser'
 
-// const smee = new SmeeClient({
-//   source: 'https://smee.io/abc123',
-//   target: 'http://localhost:3000/events',
-//   logger: console
-// })
+import {
+  log,
+}                   from 'wechaty'
 
-// const events = smee.start()
+const SmeeClient = require('smee-client')
 
-// // Stop forwarding events
-// events.close()
+type AdminReplyCallback = (contactId: string, text: string) => void
 
-// post '/incoming_from_intercom' do
-//   request.body.rewind
-//   intercom_params = JSON.parse(request.body.read)
+function smeeWebhook (webhookProxyUrl : string) {
+  log.verbose('WechatyPluginIntercom', 'smeeWebhook(%s)', webhookProxyUrl)
 
-//   # Extract the new message, and convert it to plaintext
-//   last_message_html = intercom_params['data']['item']['conversation_parts']['conversation_parts'][-1]['body']
-//   last_message = Nokogiri::HTML(last_message_html).text
+  const app =  express()
+  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(bodyParser.json())
 
-//   # Load the user who we will SMS
-//   user = INTERCOM.users.find(id: intercom_params['data']['item']['user']['id'])
+  const server = http.createServer(app)
 
-//   # Send the response to Twilio
-//   unless last_message.strip.empty?
-//     TWILIO.messages.create(
-//       from: ENV['TWILIO_NUMBER'],
-//       to: user.user_id,
-//       body: last_message
-//     )
-//   end
-//   "ok"
-// end
+  let events: any
+
+  const listener = server.listen(0, () => {
+    const port = (listener.address() as any).port
+
+    const smee = new SmeeClient({
+      logger: console,
+      source: webhookProxyUrl,
+      target: `http://127.0.0.1:${port}/events`,
+    })
+    events = smee.start()
+  })
+
+  log.verbose('WechatyPluginIntercom', 'smeeWebhook() is listening on port ' + (listener.address() as any).port)
+
+  return function webhook (callback: AdminReplyCallback) {
+    log.verbose('WechatyPluginIntercom', 'webhook(callback)')
+
+    app.post('/events', intercomWebhook)
+
+    return () => {
+      // Stop forwarding events
+      if (events) { events.close() }
+      listener.close()
+    }
+
+    function intercomWebhook (req: express.Request, res: express.Response) {
+      log.verbose('WechatyPluginIntercom', 'smeeWebhook() intercomWebhook(req, res)')
+
+      const body = req.body
+
+      const contactId = body.data.item.user.user_id
+      const parts = body.data.item.conversation_parts.conversation_parts
+      const html = parts[parts.length - 1].body
+
+      // https://www.tutorialspoint.com/how-to-remove-html-tags-from-a-string-in-javascript
+      const text = html.replace(/(<([^>]+)>)/ig, '')
+
+      // console.info(contactId, ': ', text)
+      log.verbose('WechatyPluginIntercom', 'intercomWebhook(req, res) %s -> %s', contactId, text)
+      callback(contactId, text)
+
+      res.end()
+    }
+
+  }
+
+}
+
+export { smeeWebhook }
