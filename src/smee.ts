@@ -77,7 +77,10 @@ function smeeWebhook (webhookProxyUrl : string) {
           break
 
         default:
-          throw new Error('unknown topic: ' + typeof payload!.topic)
+          log.verbose('WechatyPluginIntercom', 'intercomWebhook() unsupported payload.topic: %s',
+            (payload as any).topic,
+          )
+          break
       }
 
       res.end()
