@@ -35,10 +35,10 @@ wechaty.use(IntercomPlugin)
 
 1. `config.room`: The room id of your service WeChat room.
 1. `config.at`: If set to `true`, customers need to use `@` to mention the bot when they want to ask questions.
-1. `config.webhookProxyUrl`: A `semee.io` link that you need to set it to receive the Intercom Webhook events. See:
+1. `config.webhookProxyUrl`: A `semee.io` link that you need to set it to receive the Intercom Webhook events.
     1. [Intercom Developer Hub - Webhook Topics](https://developers.intercom.com/building-apps/docs/webhook-model#section-webhook-topics)
     1. [smee.io - Webhook payload delivery service](https://smee.io/) - Receives payloads then sends them to your locally running application.
-1. `config.intercomToken`: The Authorization Token for your Intercom account. See: 
+1. `config.intercomToken`: The Authorization Token for your Intercom account.
     1. [Intercom Developer Hub - How to get your Access Token](https://developers.intercom.com/building-apps/docs/authentication-types#section-how-to-get-your-access-token)
 
 ### Environment Variables
