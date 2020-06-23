@@ -1,7 +1,7 @@
 {
   "name": "wechaty-plugin-intercom",
   "version": "0.2.9",
-  "description": "Managing Conversations in WeChat Rooms by Intercom",
+  "description": "helps you to manage your customers/leads/users in the WeChat Room, with the power of the Intercom service.",
   "main": "dist/src/mod.js",
   "typings": "dist/src/mod.d.ts",
   "scripts": {
