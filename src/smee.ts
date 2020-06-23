@@ -7,9 +7,11 @@ import {
   log,
 }                   from 'wechaty'
 
+import { IntercomWebhookNotification } from './intercom-webhook-notification'
+
 const SmeeClient = require('smee-client')
 
-type AdminReplyCallback = (contactId: string, text: string) => void
+type AdminReplyCallback = (contactId: string, text?: string) => void
 
 function smeeWebhook (webhookProxyUrl : string) {
   log.verbose('WechatyPluginIntercom', 'smeeWebhook(%s)', webhookProxyUrl)
@@ -49,18 +51,34 @@ function smeeWebhook (webhookProxyUrl : string) {
     function intercomWebhook (req: express.Request, res: express.Response) {
       log.verbose('WechatyPluginIntercom', 'smeeWebhook() intercomWebhook(req, res)')
 
-      const body = req.body
+      const payload = req.body as IntercomWebhookNotification
+      const contactId = payload.data.item.user.user_id
 
-      const contactId = body.data.item.user.user_id
-      const parts = body.data.item.conversation_parts.conversation_parts
-      const html = parts[parts.length - 1].body
+      switch (payload.topic) {
+        case 'conversation.admin.closed':
+          log.verbose('WechatyPluginIntercom', 'intercomWebhook() conversation.admin.closed: %s', contactId)
+          callback(contactId)
+          break
 
-      // https://www.tutorialspoint.com/how-to-remove-html-tags-from-a-string-in-javascript
-      const text = html.replace(/(<([^>]+)>)/ig, '')
+        case 'conversation.admin.replied':
+          const parts = payload.data.item.conversation_parts.conversation_parts
+          const html = parts[parts.length - 1].body
 
-      // console.info(contactId, ': ', text)
-      log.verbose('WechatyPluginIntercom', 'intercomWebhook(req, res) %s -> %s', contactId, text)
-      callback(contactId, text)
+          // https://www.tutorialspoint.com/how-to-remove-html-tags-from-a-string-in-javascript
+          const text = html.replace(/(<([^>]+)>)/ig, '')
+
+          // console.info(contactId, ': ', text)
+          log.verbose('WechatyPluginIntercom', 'intercomWebhook() conversation.admin.replied: %s -> %s',
+            contactId,
+            text,
+          )
+          callback(contactId, text)
+
+          break
+
+        default:
+          throw new Error('unknown topic: ' + typeof payload!.topic)
+      }
 
       res.end()
     }

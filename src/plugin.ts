@@ -5,6 +5,7 @@ import {
 }                   from 'wechaty'
 import {
   matchers,
+  talkers,
 }                   from 'wechaty-plugin-contrib'
 
 import { intercomTalker } from './intercom'
@@ -16,6 +17,7 @@ const WECHATY_PLUGIN_INTERCOM_TOKEN             = 'WECHATY_PLUGIN_INTERCOM_TOKEN
 export interface WechatyIntercomConfig {
   room: matchers.RoomMatcherOptions,
 
+  close?           : talkers.RoomTalkerOptions,
   at?              : boolean,
   webhookProxyUrl? : string,
   intercomToken?   : string,
@@ -49,7 +51,8 @@ function WechatyIntercom (config: WechatyIntercomConfig): WechatyPlugin {
     `)
   }
 
-  const talkIntercom = intercomTalker(token)
+  const talkRoomForConversationClosed = talkers.roomTalker(config.close)
+  const talkIntercomCustomerQuestion  = intercomTalker(token)
   const webhook = smeeWebhook(webhookProxyUrl)
 
   const matchRoom    = matchers.roomMatcher(config.room)
@@ -73,7 +76,7 @@ function WechatyIntercom (config: WechatyIntercomConfig): WechatyPlugin {
       }
 
       const text = await message.mentionText()
-      await talkIntercom(from, text)
+      await talkIntercomCustomerQuestion(from, text)
     })
 
     webhook(async (contactId, text) => {
@@ -87,7 +90,11 @@ function WechatyIntercom (config: WechatyIntercomConfig): WechatyPlugin {
         if (!await matchRoom(room))   { continue }
         if (!await room.has(contact)) { continue }
 
-        await room.say(text, contact)
+        if (text) {
+          await room.say(text, contact)
+        } else {  // close event
+          await talkRoomForConversationClosed(room, contact)
+        }
         break
       }
 
