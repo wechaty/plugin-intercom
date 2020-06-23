@@ -3,7 +3,7 @@
  [![NPM Version](https://img.shields.io/npm/v/wechaty-plugin-intercom?color=brightgreen)](https://www.npmjs.com/package/wechaty-plugin-intercom)
  [![NPM](https://github.com/wechaty/wechaty-plugin-intercom/workflows/NPM/badge.svg)](https://github.com/wechaty/wechaty-plugin-intercom/actions?query=workflow%3ANPM)
 
-Connecting Conversation in Room with Intercom Conversation
+Managing Conversations in WeChat Rooms by Intercom.
 
 ![Wechaty Plugin Intercom](docs/images/intercom-wechaty.png)
 
