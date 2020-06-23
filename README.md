@@ -41,17 +41,30 @@ wechaty.use(IntercomPlugin)
 1. `config.intercomToken`: The Authorization Token for your Intercom account.
     1. [Intercom Developer Hub - How to get your Access Token](https://developers.intercom.com/building-apps/docs/authentication-types#section-how-to-get-your-access-token)
 
-### Environment Variables
+## Configure Intercom Webhooks
+
+In order to receive the reply and close events from Intercom, we need to configure two webhooks:
+
+1. `conversation.admin.replied`
+1. `conversation.admin.closed`
+
+The `request endpoint URL` must be as same as the `webhookProxyUrl` setting in the `config`.
+
+![Intercom Webhooks](docs/images/intercom-webhooks.png)
+
+> Do not forget to click [Save] button after you set them.
+
+## Environment Variables
 
 The following two environment variables will be used if the required information is not provided by the config.
 
-#### 1 `WECHATY_PLUGIN_INTERCOM_TOKEN`
+### 1 `WECHATY_PLUGIN_INTERCOM_TOKEN`
 
 `process.env.WECHATY_PLUGIN_INTERCOM_TOKEN` will be used if the `config.intercomToken` is not provided.
 
 Learn more about the authorization token of intercom: [Intercom Developers - How to get your Access Token](https://developers.intercom.com/building-apps/docs/authentication-types#section-how-to-get-your-access-token)
 
-#### 2 `WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL`
+### 2 `WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL`
 
 We receive webhook payloads with the help from <smee.io>, by proxy them to our locally running Wechaty Plugin application.
 
