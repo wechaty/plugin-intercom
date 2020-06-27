@@ -83,7 +83,7 @@ See:
 
 Our Friday BOT are using `wechaty-plugin-intercom` to connect our WeChat customers to Intercom.
 
-You can read the source code from: <https://github.com/wechaty/friday/blob/master/src/plugins/freshdesk.ts>
+You can read the source code from: <https://github.com/wechaty/friday/blob/master/src/plugins/intercom.ts>
 
 ## History
 
