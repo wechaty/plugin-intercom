@@ -3,7 +3,9 @@
  [![NPM Version](https://img.shields.io/npm/v/wechaty-plugin-intercom?color=brightgreen)](https://www.npmjs.com/package/wechaty-plugin-intercom)
  [![NPM](https://github.com/wechaty/wechaty-plugin-intercom/workflows/NPM/badge.svg)](https://github.com/wechaty/wechaty-plugin-intercom/actions?query=workflow%3ANPM)
 
-Managing Conversations in WeChat Rooms by Intercom.
+Intercom is a Conversational Relationship Platform (CRP).
+
+Wechaty Intercom Plugin helps you build better customer relationships through WeChat across the customer journey.
 
 ![Wechaty Plugin Intercom](docs/images/intercom-wechaty.png)
 
