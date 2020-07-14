@@ -42,7 +42,7 @@
     "express": "^4.17.1",
     "smee-client": "^1.1.0",
     "typed-rest-client": "^1.7.3",
-    "wechaty-plugin-contrib": "^0.11.1"
+    "wechaty-plugin-contrib": "^0.13.5"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.8.1",
