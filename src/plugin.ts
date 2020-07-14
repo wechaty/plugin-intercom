@@ -16,7 +16,7 @@ const WECHATY_PLUGIN_INTERCOM_TOKEN             = 'WECHATY_PLUGIN_INTERCOM_TOKEN
 export interface WechatyIntercomConfig {
   room: matchers.RoomMatcherOptions,
 
-  at?              : boolean,
+  mention?         : boolean,
   webhookProxyUrl? : string,
   intercomToken?   : string,
 }
@@ -68,7 +68,7 @@ function WechatyIntercom (config: WechatyIntercomConfig): WechatyPlugin {
       if (!room)                          { return }
       if (message.self())                 { return }
       if (!await matchRoom(room))         { return }
-      if (config.at) {
+      if (config.mention) {
         if (!await message.mentionSelf()) { return }
       }
 
