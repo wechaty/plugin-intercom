@@ -24,7 +24,7 @@ import { WechatyIntercom } from 'wechaty-plugin-intercom'
 const config = {
   room: 'room_id@chatroom',
 
-  at: true,
+  mention: true,
   webhookProxyUrl : 'https://smee.io/your_smee_io_proxy_url',
   intercomToken   : 'your_intercom_authorization_token',
 }
@@ -36,7 +36,7 @@ wechaty.use(IntercomPlugin)
 ```
 
 1. `config.room`: The room id of your service WeChat room.
-1. `config.at`: If set to `true`, customers need to use `@` to mention the bot when they want to ask questions.
+1. `config.mention`: If set to `true`, customers need to use `@` to mention the bot when they want to ask questions.
 1. `config.webhookProxyUrl`: A `semee.io` link that you need to set it to receive the Intercom Webhook events.
     1. [Intercom Developer Hub - Webhook Topics](https://developers.intercom.com/building-apps/docs/webhook-model#section-webhook-topics)
     1. [smee.io - Webhook payload delivery service](https://smee.io/) - Receives payloads then sends them to your locally running application.
