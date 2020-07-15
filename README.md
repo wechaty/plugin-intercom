@@ -89,7 +89,9 @@ You can read the source code from: <https://github.com/wechaty/friday/blob/maste
 
 ## History
 
-### master
+### v0.4 master
+
+1. Rename `at` to `mention` in config.
 
 ### v0.2 (Jun 2020)
 
