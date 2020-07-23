@@ -91,6 +91,7 @@ You can read the source code from: <https://github.com/wechaty/friday/blob/maste
 
 ### v0.4 master
 
+1. Renamed from `wechaty-plugin-intercom` to `wechaty-intercom`.
 1. Rename `at` to `mention` in config.
 
 ### v0.2 (Jun 2020)
