@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node
 import {
   VERSION,
-}                       from 'wechaty-plugin-intercom'
+}                       from 'wechaty-intercom'
 
 async function main () {
   if (VERSION === '0.0.0') {

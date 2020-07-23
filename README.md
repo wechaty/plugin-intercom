@@ -1,7 +1,7 @@
-# wechaty-plugin-intercom [![Wechaty Plugin Intercom](https://img.shields.io/badge/Wechaty%20Plugin-Intercom-brightgreen.svg)](https://github.com/wechaty/wechaty-plugin-intercom)
+# wechaty-intercom [![Wechaty Plugin Intercom](https://img.shields.io/badge/Wechaty%20Plugin-Intercom-brightgreen.svg)](https://github.com/wechaty/wechaty-intercom)
 
- [![NPM Version](https://img.shields.io/npm/v/wechaty-plugin-intercom?color=brightgreen)](https://www.npmjs.com/package/wechaty-plugin-intercom)
- [![NPM](https://github.com/wechaty/wechaty-plugin-intercom/workflows/NPM/badge.svg)](https://github.com/wechaty/wechaty-plugin-intercom/actions?query=workflow%3ANPM)
+ [![NPM Version](https://img.shields.io/npm/v/wechaty-intercom?color=brightgreen)](https://www.npmjs.com/package/wechaty-intercom)
+ [![NPM](https://github.com/wechaty/wechaty-intercom/workflows/NPM/badge.svg)](https://github.com/wechaty/wechaty-intercom/actions?query=workflow%3ANPM)
 
 Intercom is a Conversational Relationship Platform (CRP).
 
@@ -19,7 +19,7 @@ Wechaty Intercom Plugin helps you to manage your customers/leads/users in the We
 ## Usage
 
 ```ts
-import { WechatyIntercom } from 'wechaty-plugin-intercom'
+import { WechatyIntercom } from 'wechaty-intercom'
 
 const config = {
   room: 'room_id@chatroom',
@@ -83,7 +83,7 @@ See:
 
 ## Example
 
-Our Friday BOT are using `wechaty-plugin-intercom` to connect our WeChat customers to Intercom.
+Our Friday BOT are using `wechaty-intercom` to connect our WeChat customers to Intercom.
 
 You can read the source code from: <https://github.com/wechaty/friday/blob/master/src/plugins/intercom.ts>
 
@@ -101,14 +101,14 @@ You can read the source code from: <https://github.com/wechaty/friday/blob/maste
 
 ## Contributors
 
-[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/images/0)](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/links/0)
-[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/images/1)](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/links/1)
-[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/images/2)](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/links/2)
-[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/images/3)](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/links/3)
-[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/images/4)](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/links/4)
-[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/images/5)](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/links/5)
-[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/images/6)](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/links/6)
-[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/images/7)](https://sourcerer.io/fame/huan/wechaty/wechaty-plugin-intercom/links/7)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/images/0)](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/links/0)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/images/1)](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/links/1)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/images/2)](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/links/2)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/images/3)](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/links/3)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/images/4)](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/links/4)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/images/5)](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/links/5)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/images/6)](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/links/6)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/images/7)](https://sourcerer.io/fame/huan/wechaty/wechaty-intercom/links/7)
 
 ## Author
 
