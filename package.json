@@ -1,6 +1,6 @@
 {
   "name": "wechaty-intercom",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Wechaty Intercom Plugin helps you build better customer relationships through WeChat across the customer journey.",
   "main": "dist/src/mod.js",
   "typings": "dist/src/mod.d.ts",
