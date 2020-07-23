@@ -61,19 +61,20 @@ function smeeWebhook (webhookProxyUrl : string) {
           break
 
         case 'conversation.admin.replied':
-          const parts = payload.data.item.conversation_parts.conversation_parts
-          const html = parts[parts.length - 1].body
+          {
+            const parts = payload.data.item.conversation_parts.conversation_parts
+            const html = parts[parts.length - 1].body
 
-          // https://www.tutorialspoint.com/how-to-remove-html-tags-from-a-string-in-javascript
-          const text = html.replace(/(<([^>]+)>)/ig, '')
+            // https://www.tutorialspoint.com/how-to-remove-html-tags-from-a-string-in-javascript
+            const text = html.replace(/(<([^>]+)>)/ig, '')
 
-          // console.info(contactId, ': ', text)
-          log.verbose('WechatyPluginIntercom', 'intercomWebhook() conversation.admin.replied: %s -> %s',
-            contactId,
-            text,
-          )
-          callback(contactId, text)
-
+            // console.info(contactId, ': ', text)
+            log.verbose('WechatyPluginIntercom', 'intercomWebhook() conversation.admin.replied: %s -> %s',
+              contactId,
+              text,
+            )
+            callback(contactId, text)
+          }
           break
 
         default:

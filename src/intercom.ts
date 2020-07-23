@@ -19,7 +19,7 @@ function intercomTalker (token: string) {
   const client = new RestClient(
     'WechatyPluginIntercom',
     'https://api.intercom.io/',
-    [ bearerHandler ],
+    [bearerHandler],
   )
 
   return async function talkIntercom (
@@ -106,8 +106,6 @@ function intercomTalker (token: string) {
   }
 
   async function createContact (options: CreateContactOptions): Promise<string> {
-    let restRes:  IRestResponse<any>
-
     const data = {
       avatar       : options.avatar,
       email        : options.email,
@@ -118,16 +116,14 @@ function intercomTalker (token: string) {
       signed_up_at : Date.now() / 1000,
     }
 
-    restRes = await client.create<any>('contacts', data)
+    const restRes = await client.create<any>('contacts', data)
     return restRes.result.id
   }
 
   async function getContactIdListByExternalId (
     contactId: string,
   ): Promise<string[]> {
-    let restRes:  IRestResponse<any>
-
-    restRes = await client.create<any>('contacts/search', {
+    const restRes = await client.create<any>('contacts/search', {
       query:  {
         field: 'external_id',
         operator: '=',
