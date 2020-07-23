@@ -1,5 +1,5 @@
 {
-  "name": "wechaty-plugin-intercom",
+  "name": "wechaty-intercom",
   "version": "0.4.2",
   "description": "Wechaty Intercom Plugin helps you build better customer relationships through WeChat across the customer journey.",
   "main": "dist/src/mod.js",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wechaty/wechaty-plugin-intercom.git"
+    "url": "git+https://github.com/wechaty/wechaty-intercom.git"
   },
   "keywords": [
     "wechaty",
@@ -32,9 +32,9 @@
   "author": "Huan LI <zixia@zixia.net>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/wechaty/wechaty-plugin-intercom/issues"
+    "url": "https://github.com/wechaty/wechaty-intercom/issues"
   },
-  "homepage": "https://github.com/wechaty/wechaty-plugin-intercom#readme",
+  "homepage": "https://github.com/wechaty/wechaty-intercom#readme",
   "dependencies": {
     "bl": "^4.0.2",
     "body-parser": "^1.19.0",
