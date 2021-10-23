@@ -89,6 +89,10 @@ You can read the source code from: <https://github.com/wechaty/friday/blob/maste
 
 ## History
 
+### v1.0 (Oct 23, 2021)
+
+Release v1.0 of Wechaty Intercom Plugin.
+
 ### v0.4 master
 
 1. Renamed from `wechaty-plugin-intercom` to `wechaty-intercom`.
